@@ -177,35 +177,34 @@ endmodule
 
 
 
-
-Here’s the revised report with a table summarizing the parameters:
-
----
-
-# Report: Simulation and Analysis of Phase Noise in Dual-Loop Optoelectronic Oscillators (OEOs)
-
-## 1. Introduction
-
-This report analyzes phase noise in dual-loop optoelectronic oscillators (OEOs) by examining contributions from different noise sources, the influence of optical power ratio (\( \mu \)), and the effect of fiber lengths in the dual-loop configuration. Phase noise performance is a critical aspect of OEOs, influencing their application in high-precision microwave and RF signal generation.
+Here's the same report formatted for a GitHub README file:
 
 ---
 
-## 2. Transfer Function and Parameters
+# Simulation and Analysis of Phase Noise in Dual-Loop Optoelectronic Oscillators (OEOs)
 
-The dual-loop OEO’s transfer function \( H(jf) \) captures the influence of the optical feedback loops and group delay on the noise transfer. It is expressed as:
+This repository provides MATLAB code and a detailed analysis of phase noise in dual-loop optoelectronic oscillators (OEOs). The analysis includes contributions from various noise sources, the effect of optical power ratio (\( \mu \)), and the influence of fiber lengths.
+
+---
+
+## Transfer Function
+
+The transfer function \( H(jf) \) of the dual-loop OEO is expressed as:
 
 \[
 H(jf) = \frac{1}{1 - \frac{\mu e^{-j 2 \pi f \tau_d1} + (1 - \mu) e^{-j 2 \pi f \tau_d2}}{1 + j 2 \pi f \tau_f}}
 \]
 
-where:
+Where:
 - \( f \): Frequency offset (Hz)
 - \( \tau_d1 \): Delay of the short fiber (s)
 - \( \tau_d2 \): Delay of the long fiber (s)
-- \( \tau_f \): Group delay of the electrical bandpass filter (EBPF) (s)
+- \( \tau_f \): Group delay of the electrical bandpass filter (s)
 - \( \mu \): Optical power ratio between the short and long loops
 
-### Table 1: Simulation Parameters
+---
+
+## Simulation Parameters
 
 | **Parameter**                | **Symbol**      | **Value**               |
 |-------------------------------|-----------------|-------------------------|
@@ -227,50 +226,48 @@ where:
 | Group delay of EBPF           | \( \tau_f \)    | 8e-8 s                  |
 | Optical power ratio           | \( \mu \)       | 0.32                    |
 
-The delay times for the fiber loops are calculated as:
-\[
-\tau_d1 = \frac{L_1}{c / n}, \quad \tau_d2 = \frac{L_2}{c / n}
-\]
-
 ---
 
-## 3. Noise Contributions
-
-The total phase noise comprises contributions from thermal noise, shot noise, RIN, flicker noise, dispersion noise, and interference noise:
+## Noise Sources
 
 1. **Thermal Noise**:
    \[
    S_{\text{therm}} = \frac{F k T}{P_o}
    \]
+
 2. **Shot Noise**:
    \[
    S_{\text{shot}} = \frac{2 e I_{ph} R}{P_o}
    \]
+
 3. **Relative Intensity Noise (RIN)**:
    \[
    S_{\text{RIN}} = \frac{NRIN \cdot I_{ph}^2 R}{P_o}
    \]
+
 4. **Flicker Noise**:
    \[
    S_{\text{flicker}} = \frac{b_1}{f}
    \]
+
 5. **Dispersion Noise**:
    \[
    S_{\text{dispersion}} = \left(2 \pi f_o \lambda_0^2 D_\lambda \frac{L_2}{c}\right)^2 \frac{\Delta \nu_{LW}}{f}
    \]
+
 6. **Interference Noise**:
    \[
    S_{\text{interference}} = \frac{2 P_1 P_2 \sin^2(2 \pi f_o \tau_{d2})}{\sin^2(\pi f \tau_{d2}) f^2} \Delta \nu_{LW}
    \]
 
-The combined noise power spectrum is:
+The total noise is calculated as:
 \[
 \text{Noise}_{\text{total}} = \left| H(jf) \right|^2 \cdot \frac{1}{2} \cdot \left( S_{\text{therm}} + S_{\text{shot}} + S_{\text{RIN}} + S_{\text{flicker}} + S_{\text{dispersion}} + S_{\text{interference}} \right)
 \]
 
 ---
 
-## 4. Simulation Results
+## Simulation Results
 
 ### (a) Noise Contributions
 Figure 4(a) depicts individual contributions to the total phase noise. The flicker noise dominates at low frequencies, while RIN and thermal noise become significant at higher frequency offsets.
@@ -286,10 +283,19 @@ Figure 4(d) explores the influence of long fiber length (\( L_2 \)) on phase noi
 
 ---
 
-## 5. Conclusion
+## Conclusion
 
-The dual-loop OEO exhibits lower phase noise than its single-loop counterpart, especially when \( \mu \) and \( L_2 \) are optimized. The model highlights the interplay between various noise sources and demonstrates the importance of balancing design parameters for optimal performance.
+The dual-loop OEO exhibits lower phase noise than its single-loop counterpart, especially when \( \mu \) and \( L_2 \) are optimized. The MATLAB simulations highlight the interplay between various noise sources and demonstrate the importance of balancing design parameters for optimal performance.
 
 ---
 
-This report summarizes the MATLAB simulation and offers insights into key design considerations for low-phase-noise OEO systems.
+### Repository Structure
+
+- `noise_analysis.m`: MATLAB script for noise analysis and plotting.
+- `README.md`: This document.
+
+Feel free to contribute or raise issues for further enhancements. 😊
+
+--- 
+
+Let me know if you'd like adjustments or additional sections!
